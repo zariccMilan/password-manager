@@ -14,5 +14,5 @@ public interface UserMapper {
     User findById(UUID id);
     void insert(User user);
     void update(User user);
-    void delete(UUID id);
+    void deleteById(UUID id);
 }
