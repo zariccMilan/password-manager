@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- MY NAMESPACE -->
+<mapper namespace="com.milanzaric.password_manager.repository.mapper.UserMapper">
+
+    <sql id="columns">
+        id, name, last_name, user_name
+    </sql>
+
+    <!-- READ ALL -->
+    <select id="findAll" resultType="User">
+        SELECT
+        <include refid="columns"/>
+        FROM users
+        ORDER BY user_name
+    </select>
+
+    <!-- READ ONE -->
+    <select id="findById" resultType="User">
+        SELECT
+        <include refid="columns"/>
+        FROM users
+        WHERE id = #{id}
+    </select>
+
+    <!-- CREATE -->
+    <insert id="insert">
+        INSERT INTO users (id, name, last_name, user_name)
+        VALUES (#{id}, #{name}, #{lastName}, #{userName})
+    </insert>
+
+    <!-- UPDATE -->
+    <update id="update">
+        UPDATE users
+        SET name = #{name}.
+        last_name = #{lastName},
+        user_name = #{userName}
+        WHERE id = #{id}
+    </update>
+
+    <!-- DELETE -->
+    <delete id="deleteById">
+        DELETE FROM users
+        WHERE id = #{id}
+    </delete>
+
+</mapper>
